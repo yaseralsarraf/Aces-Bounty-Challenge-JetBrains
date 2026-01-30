@@ -1,0 +1,16 @@
+<idea-plugin>
+    <id>com.bounty.search</id>
+
+    <name>Natural Language Code Search</name>
+    <vendor>Student</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="CodeSearchAI"
+                    secondary="true"
+                    icon="AllIcons.General.Web"
+                    anchor="right"
+                    factoryClass="com.example.naturalangcodesearch.SearchToolWindowFactory"/>
+    </extensions>
+</idea-plugin>
