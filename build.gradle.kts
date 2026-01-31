@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.intellij.platform") version "2.10.2"
 }
 
+//dont change this maybe, maybe not
 group = "com.example"
 version = "1.0-SNAPSHOT"
 
