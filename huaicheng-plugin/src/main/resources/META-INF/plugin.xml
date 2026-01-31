@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>com.example.visualnav</id>
+    <name>Visual Navigation Mind Map</name>
+
+    <vendor url="https://github.com/yourprofile">Hello</vendor>
+
+    <description><![CDATA[
+        A visual navigation tool that displays project files as an interactive mind map.
+        Helps developers understand file relationships and dependencies visually.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>com.intellij.modules.json</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Mind Map"
+                    secondary="false"
+                    anchor="right"
+                    factoryClass="com.example.demo.MindMapToolWindowFactory"
+                    icon="AllIcons.General.Layout"/>
+        <toolWindow id="Global Map"
+                    secondary="true"
+                    icon="AllIcons.Graph.Layout"
+                    anchor="right"
+                    factoryClass="com.example.demo.GlobalMapToolWindowFactory"/>
+    </extensions>
+</idea-plugin>
