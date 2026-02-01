@@ -25,6 +25,14 @@
             anchor="right"
             factoryClass="com.connectionmap.ConnectionMapToolWindowFactory"
             icon="AllIcons.General.Modified"/>
+            
+        <!-- Global Map: Modern D3.js visualization with AI analyzer -->
+        <toolWindow 
+            id="Global Map"
+            anchor="right"
+            secondary="true"
+            factoryClass="com.connectionmap.GlobalMapToolWindowFactory"
+            icon="AllIcons.Graph.Layout"/>
     </extensions>
     
     <projectListeners>

@@ -1,4 +1,4 @@
-package com.example.demo
+package com.connectionmap.ai
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject

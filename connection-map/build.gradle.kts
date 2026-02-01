@@ -14,9 +14,15 @@ repositories {
 }
 
 dependencies {
+    // Gson for JSON serialization (required for GlobalMap)
+    implementation("com.google.code.gson:gson:2.10.1")
+    
     intellijPlatform {
         intellijIdeaCommunity("2024.1")
         instrumentationTools()
+        
+        // JCEF for browser-based UI
+        bundledPlugin("com.intellij.java")
     }
 }
 
