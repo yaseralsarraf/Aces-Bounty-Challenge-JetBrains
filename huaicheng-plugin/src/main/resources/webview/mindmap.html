@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: #1e1f22;
+            color: #bcbec4;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Galaxy Node Styling */
+        .node {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #7F52FF;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #7F52FF;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        .node:hover { transform: scale(1.5); box-shadow: 0 0 20px #fff; }
+        .node-label {
+            position: absolute;
+            top: 20px;
+            left: -20px;
+            width: 100px;
+            text-align: center;
+            font-size: 10px;
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        /* Diagnostic Status Bar */
+        #status {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ff00;
+            background: rgba(0,0,0,0.5);
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+<div id="status">Status: Interface Loaded. Waiting for Kotlin...</div>
+<div id="universe" style="position: relative; width: 100%; height: 100%;"></div>
+
+<script>
+    function updateGraph(data) {
+        const status = document.getElementById('status');
+        const universe = document.getElementById('universe');
+
+        // 1. Update Status
+        if (!data || !data.nodes || data.nodes.length === 0) {
+            status.innerHTML = "Status: Data Received but EMPTY (0 files).";
+            status.style.color = "orange";
+            return;
+        }
+        status.innerHTML = `Status: Success! Rendering ${data.nodes.length} nodes.`;
+
+        // 2. Clear Universe
+        universe.innerHTML = "";
+
+        // 3. Draw "Galaxy" Nodes (Simple Math Layout)
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const radius = 150;
+
+        data.nodes.forEach((node, index) => {
+            const element = document.createElement('div');
+            element.className = 'node';
+
+            // Spiral Layout Calculation
+            const angle = index * 0.5; // Spread them out
+            const distance = 50 + (index * 15); // Spiral outward
+            const x = centerX + Math.cos(angle) * distance;
+            const y = centerY + Math.sin(angle) * distance;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+
+            // Color based on type
+            if (node.type === 'java') element.style.background = '#E76F00';
+            if (node.type === 'py') element.style.background = '#3572A5';
+
+            // Label
+            const label = document.createElement('div');
+            label.className = 'node-label';
+            label.innerText = node.name;
+            element.appendChild(label);
+
+            universe.appendChild(element);
+        });
+    }
+</script>
+</body>
+</html>
