@@ -1,0 +1,39 @@
+<idea-plugin>
+    <id>com.connectionmap</id>
+    <name>Connection Map</name>
+    <version>1.0.0</version>
+    <vendor>Connection Map Team</vendor>
+    
+    <description><![CDATA[
+        Visualize how files in your project are connected through imports.
+        See the impact of changes at a glance with an interactive dependency graph.
+    ]]></description>
+    
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 
+            ToolWindow: A dockable panel in IntelliJ (like the Project explorer).
+            This registers our Connection Map panel on the right side of the IDE.
+            factoryClass: The class that creates the panel content.
+            anchor: Which side to dock (right, left, bottom, top).
+            icon: Using a built-in IntelliJ icon for now.
+        -->
+        <toolWindow 
+            id="Connection Map"
+            anchor="right"
+            factoryClass="com.connectionmap.ConnectionMapToolWindowFactory"
+            icon="AllIcons.General.Modified"/>
+    </extensions>
+    
+    <projectListeners>
+        <!--
+            VFS Listener: Listens for file system changes (create/edit/delete).
+            This triggers graph refresh when .kt or .java files change.
+        -->
+        <listener 
+            class="com.connectionmap.listeners.FileChangeListener"
+            topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
+    </projectListeners>
+</idea-plugin>

@@ -1,0 +1,21 @@
+# Gradle
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IntelliJ Platform Plugin Sandbox
+.intellijPlatform/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
