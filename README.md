@@ -1,4 +1,4 @@
-# Prototype
+# Aces JetBrains bounty challenge 
 
 This project uses [Gradle](https://gradle.org/).
 To build and run the application, use the *Gradle* tool window by clicking the Gradle icon in the right-hand toolbar,
@@ -21,3 +21,5 @@ The shared build logic was extracted to a convention plugin located in `buildSrc
 
 This project uses a version catalog (see `gradle/libs.versions.toml`) to declare and version dependencies
 and both a build cache and a configuration cache (see `gradle.properties`).
+
+This project needs the use of an AI API for the file analysis. 
